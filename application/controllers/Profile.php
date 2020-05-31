@@ -99,7 +99,7 @@ class Profile extends Admin_Controller {
                 if ($ch_password && empty($ch_password->errors)) 
                 { 
                     $save['uid']          = $user['uid'];
-                    $save['password']     = $post['password_new'];
+                    $save['password']     = MD5($post['password_new']);
                     $save['password_def'] = '';
                     if ($this->user_model->addEditUser($save)) {
                         $message .= alert_notice('Your password has been changed successfully', 'success');
